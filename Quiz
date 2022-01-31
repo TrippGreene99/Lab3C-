@@ -1,0 +1,207 @@
+using System;
+using System.Collections;
+
+class Quiz
+
+{
+
+private ArrayList questions;
+
+public Quiz()
+
+{
+
+questions = new ArrayList();
+
+}
+
+public void Add()
+
+{
+
+Console.WriteLine("Enter Question Description:");
+
+string questionDesc = Console.ReadLine();
+
+Console.WriteLine("Enter Answer:");
+
+string answer = Console.ReadLine();
+
+Console.WriteLine("Enter Difficulty Level( Easy or Medium or Hard):");
+
+string difficultLevel = Console.ReadLine();
+
+Question newQuestion = new Question(questionDesc,difficultLevel);
+
+newQuestion.SetAnswer(answer);
+
+questions.Add(newQuestion);
+
+}
+
+public void Remove()
+
+{
+
+Console.WriteLine("Enter Question Description to be removed:");
+
+string removeQuestion = Console.ReadLine();
+
+bool questionFound = false;
+
+foreach(Question question in questions)
+
+{
+
+if(question.GetQuestion().ToLower() == removeQuestion.ToLower())
+
+{
+
+questions.Remove(question);
+
+Console.WriteLine("Question has been removed");
+
+questionFound = true;
+
+break;
+
+}
+
+}
+
+if(!questionFound)
+
+{
+
+Console.WriteLine("No such question found!");
+
+}
+
+}
+
+public void Modify()
+
+{
+
+Console.WriteLine("Enter Question Description to be modified:");
+
+string modifyQuestionDesc = Console.ReadLine();
+
+bool questionFound = false;
+
+for(int index = 0; index < questions.Count; index++)
+
+{
+
+Question question = (Question)questions[index];
+
+if(question.GetQuestion(
+
+).ToLower() == modifyQuestionDesc.ToLower())
+
+{
+
+Console.WriteLine("Enter New Question Description:");
+
+string questionDesc = Console.ReadLine();
+
+Console.WriteLine("Enter New Answer:");
+
+string answer = Console.ReadLine();
+
+Console.WriteLine("Enter New Difficulty Level( Easy or Medium or Hard):");
+
+string difficultLevel = Console.ReadLine();
+
+Question modifiedQuestion = new Question(questionDesc, difficultLevel);
+
+modifiedQuestion.SetAnswer(answer);
+
+questions[index] = modifiedQuestion;
+
+Console.WriteLine("Question has been modifed");
+
+questionFound = true;
+
+break;
+
+}
+
+}
+
+if(!questionFound)
+
+{
+
+Console.WriteLine("No such question found!");
+
+}
+
+}
+
+public void QuizGive()
+
+{
+
+int correctanswers = 0;
+
+foreach(Question question in questions)
+
+{
+
+Console.WriteLine(question.GetQuestion());
+
+Console.WriteLine("Enter your answer: ");
+
+string answer = Console.ReadLine();
+
+if(answer.ToLower() == question.GetAnswer().ToLower())
+
+{
+
+correctanswers++;
+
+}
+
+}
+
+Console.WriteLine("\nYou have got " + correctanswers + " correct out of " + questions.Count);
+
+}
+
+
+public void getQuestions()
+
+{
+
+foreach (Question question in questions)
+
+{
+
+Console.WriteLine(question.GetQuestion());
+
+}
+
+}
+
+public void ResultsPaper()
+
+{
+
+int index = 0;
+
+foreach (Question question in questions)
+
+{
+
+index++;
+
+Console.WriteLine("Question " + index + ": " + question.GetQuestion());
+
+Console.WriteLine("Answer: " + question.GetAnswer());
+
+}
+
+}
+
+}
