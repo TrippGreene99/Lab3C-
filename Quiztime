@@ -1,0 +1,102 @@
+using System;
+class QuizTime {
+
+public static int GetMenuChoice()
+
+{
+
+Console.WriteLine("****** MENU ******");
+Console.WriteLine("1. Add a question");
+Console.WriteLine("2. Display questions");
+Console.WriteLine("3. Deleting a question");
+Console.WriteLine("4. Modify a question");
+Console.WriteLine("5. Take Quiz");
+Console.WriteLine("6. Show the questions and answers sheet");
+Console.WriteLine("7. Exit");
+do
+
+{
+
+Console.WriteLine("Enter your choice (1 - 7): ");
+string strChoice = Console.ReadLine();
+int choice;
+
+if(int.TryParse(strChoice, out choice) && choice > 0 && choice < 8){
+
+return choice;
+
+}
+
+Console.WriteLine("Invalid choice, please retry!");
+
+}while(true);
+
+}
+
+public static void Main (string[] args) {
+
+Quiz mathQuiz = new Quiz();
+
+int userChoice = 0;
+
+do
+
+{
+
+userChoice = GetMenuChoice();
+
+switch (userChoice)
+
+{
+
+case 1:
+
+mathQuiz.Add();
+
+break;
+
+case 2:
+
+mathQuiz.getQuestions();
+
+break;
+
+case 3:
+
+mathQuiz.Remove();
+
+break;
+
+case 4:
+
+mathQuiz.Modify();
+
+break;
+
+case 5:
+
+mathQuiz.QuizGive();
+
+break;
+
+case 6:
+
+mathQuiz.ResultsPaper();
+
+break;
+
+case 7:
+
+Console.WriteLine("Good Bye, See you Soon!");
+
+break;
+
+}
+
+} while (userChoice != 7);
+
+Console.ReadKey();
+
+}
+
+}
