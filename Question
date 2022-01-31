@@ -1,0 +1,41 @@
+class Question{
+
+private string questionDesc;
+
+private string answer;
+
+private string difficultyLevel;
+
+public Question(string questionDesc, string difficultyLevel){
+
+this.questionDesc = questionDesc;
+
+this.difficultyLevel = difficultyLevel;
+
+}
+
+public string GetQuestion(){
+
+return this.questionDesc;
+
+}
+
+public string GetAnswer(){
+
+return this.answer;
+
+}
+
+public void SetQuestion(string questionDesc){
+
+this.questionDesc = questionDesc;
+
+}
+
+public void SetAnswer(string answer){
+
+this.answer = answer;
+
+}
+
+}
